@@ -22,7 +22,7 @@ module KrakenClient
           :TradeVolume        => :trade_volume,
           :AddOrder           => [:add_order,     params: [:pair, :type, :ordertype, :volume]],
           :CancelOrder        => [:cancel_order,  params: [:txid]],
-          :DepositAddresses   => [:depsit_addresses, params: [:aclass, :asset, :method, :new]],
+          :DepositAddresses   => [:deposit_addresses, params: [:aclass, :asset, :method, :new]],
         }
       end
 
