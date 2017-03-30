@@ -9,19 +9,20 @@ module KrakenClient
 
       def data
         {
-          :Balance       => :balance,
-          :TradeBalance  => :trade_balance,
-          :OpenOrders    => :open_orders,
-          :ClosedOrders  => :closed_orders,
-          :QueryOrders   => [:query_orders,  params: [:txid]],
-          :TradesHistory => :trades_history,
-          :QueryTrades   => [:query_trades,  params: [:txid]],
-          :OpenPositions => :open_positions, params: [:txid],
-          :Ledgers       => :ledgers,
-          :QueryLedgers  => [:query_ledgers, params: [:id]],
-          :TradeVolume   => :trade_volume,
-          :AddOrder      => [:add_order,     params: [:pair, :type, :ordertype, :volume]],
-          :CancelOrder   => [:cancel_order,  params: [:txid]],
+          :Balance            => :balance,
+          :TradeBalance       => :trade_balance,
+          :OpenOrders         => :open_orders,
+          :ClosedOrders       => :closed_orders,
+          :QueryOrders        => [:query_orders,  params: [:txid]],
+          :TradesHistory      => :trades_history,
+          :QueryTrades        => [:query_trades,  params: [:txid]],
+          :OpenPositions      => :open_positions, params: [:txid],
+          :Ledgers            => :ledgers,
+          :QueryLedgers       => [:query_ledgers, params: [:id]],
+          :TradeVolume        => :trade_volume,
+          :AddOrder           => [:add_order,     params: [:pair, :type, :ordertype, :volume]],
+          :CancelOrder        => [:cancel_order,  params: [:txid]],
+          :DepositAddresses   => [:depsit_addresses, params: [:aclass, :asset, :method, :new]],
         }
       end
 
