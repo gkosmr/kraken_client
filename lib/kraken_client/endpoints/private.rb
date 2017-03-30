@@ -4,7 +4,8 @@ module KrakenClient
 
       def perform(endpoint_name, args)
         url      = config.base_uri + url_path(endpoint_name)
-        Hashie::Mash.new(request_manager.call(url, endpoint_name, args))
+        result   = request_manager.call(url, endpoint_name, args)
+        Hashie::Mash.new({ result: result}).result
       end
 
       def data
@@ -24,6 +25,8 @@ module KrakenClient
           :CancelOrder        => [:cancel_order,  params: [:txid]],
           :DepositMethods     => [:deposit_methods, params: [:asset]],
           :DepositAddresses   => [:deposit_addresses, params: [:asset, :method]],
+          :Withdraw           => [:withdraw, params: [:asset, :key, :amount]],
+          :WithdrawInfo       => [:withdraw_info, params: [:asset, :key, :amount]]
         }
       end
 
