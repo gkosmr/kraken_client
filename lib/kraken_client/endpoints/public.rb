@@ -5,7 +5,7 @@ module KrakenClient
       def perform(endpoint_name, args)
         response = request_manager.call(url(endpoint_name), args)
         hash = Hashie::Mash.new(JSON.parse(response.body))
-        hash[:result]
+        hash.has_key?(:result) ? hash[:result] : hash
       end
 
       def data
@@ -17,7 +17,7 @@ module KrakenClient
           :Trades     => :trades,
           :Spread     => :spread,
           :Assets     => :assets,
-          :OHLC       => [:ohlc, params: [:asset]]
+          :OHLC       => [:ohlc, params: [:pair]]
         }
       end
 
@@ -25,9 +25,6 @@ module KrakenClient
 
       def url(endpoint_name)
         @url = config.base_uri + '/' + config.api_version.to_s + '/public/' + endpoint_name
-      end
-
-      def raise_exception(*)
       end
     end
   end
