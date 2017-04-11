@@ -35,7 +35,7 @@ module KrakenClient
         fail ::KrakenClient::NotImplemented
       end
 
-      def raise_exception
+      def raise_exception options, args
         return unless options.is_a?(Hash)
 
         leftover = options[:params] - args.keys
