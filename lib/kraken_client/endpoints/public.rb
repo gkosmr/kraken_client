@@ -17,6 +17,7 @@ module KrakenClient
           :Trades     => :trades,
           :Spread     => :spread,
           :Assets     => :assets,
+          :OHLC       => [:ohlc, params: [:asset]]
         }
       end
 
