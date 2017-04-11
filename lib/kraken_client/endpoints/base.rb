@@ -36,7 +36,13 @@ module KrakenClient
       end
 
       def raise_exception
-        fail ::KrakenClient::NotImplemented
+        return unless options.is_a?(Hash)
+
+        leftover = options[:params] - args.keys
+
+        if leftover.length > 0
+          fail ::KrakenClient::ArgumentError, "Required options absent. Input must include #{leftover}"
+        end
       end
     end
   end

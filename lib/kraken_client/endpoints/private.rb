@@ -30,16 +30,6 @@ module KrakenClient
         }
       end
 
-      def raise_exception(options, args)
-        return unless options.is_a?(Hash)
-
-        leftover = options[:params] - args.keys
-
-        if leftover.length > 0
-          fail ::KrakenClient::ArgumentError, "Required options absent. Input must include #{leftover}"
-        end
-      end
-
       private
 
       def url_path(method)
